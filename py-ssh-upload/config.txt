@@ -1,0 +1,2 @@
+127.0.0.1:pete:secret
+target.zip:/home/user/final.zip
