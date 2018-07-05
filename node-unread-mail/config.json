@@ -1,0 +1,16 @@
+{
+    "mail_url": "",
+
+    "selector": {
+        "user": "",
+        "pass": "",
+        "submit": "",
+        "unread_mail": ""
+    },
+
+    "credential": {
+        "user": "",
+        "pass": ""
+    }
+
+}
