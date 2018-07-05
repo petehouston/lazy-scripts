@@ -24,7 +24,7 @@ currtime = time.time()
 
 try:
     ssh.connect(server, username=username, password=password)    
-    # stdin, stdout, stderr = ssh.exec_command('rm -rf /home/nhn/config.txt')
+    # stdin, stdout, stderr = ssh.exec_command('rm -rf /home/user/config.txt')
     # for lin in stdout.readlines():
         # print(lin.strip())
 except paramiko.AuthenticationException:
