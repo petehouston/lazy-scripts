@@ -31,7 +31,8 @@ const WORKPLACE_URL = 'https://' + CONFIG.workplace_id + '.facebook.com/login/?n
             if(!!anchor) {
                 return {
                     text: anchor.innerText.split('\n')[0],
-                    time: anchor.innerText.split('\n')[1]
+                    time: anchor.innerText.split('\n')[1],
+                    url : anchor.href
                 }
             }
         })
