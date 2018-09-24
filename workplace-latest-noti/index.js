@@ -10,9 +10,6 @@ const WORKPLACE_URL = 'https://' + CONFIG.workplace_id + '.facebook.com/login/?n
     
     await page.goto(WORKPLACE_URL);
 
-    // await page.type('#content form input[data-testid="email_input"]', CONFIG.email);
-    // await page.click('#content form button[type="submit"]');
-
     await page.type('#login_form input[type="password"]', CONFIG.password);
 
     await page.click('#login_form button[type="submit"]');
@@ -27,27 +24,21 @@ const WORKPLACE_URL = 'https://' + CONFIG.workplace_id + '.facebook.com/login/?n
 
     console.log('Unread count: ' + unread_count);
 
-    // await page.waitForSelector('div[data-testid="notif_hub_notifs_list"] ul[data-testid="see_all_list"]');
-
     await page.waitFor(3000);
 
-    // const items = await page.$eval('div[data-testid="notif_hub_notifs_list"] ul[data-testid="see_all_list"] > li', e => {
-    //     console.log(e);
-    //     let anchor = e.querySelector('a');
-    //     if(!!anchor) {
-    //         let d = {};
-    //         console.log('1');
-    //         d.text = anchor.innerText;
-    //         let t = anchor.querySelector('span.timestampContent');
-    //         console.log('2');
-    //         d.time = t.innerText;
-    //         d.text = d.text.replace(d.time, '');
-    //         return d;
-    //     }
-    // });
+    const list = await page.$$eval('div[data-testid="notif_hub_notifs_list"] ul[data-testid="see_all_list"] > li', lis => lis.map(e => {
+            let anchor = e.querySelector('a');
+            if(!!anchor) {
+                return {
+                    text: anchor.innerText.split('\n')[0],
+                    time: anchor.innerText.split('\n')[1]
+                }
+            }
+        })
+    );
 
+    console.log(list);
 
-    // console.log(JSON.stringify(items));
 
     await browser.close();
 
